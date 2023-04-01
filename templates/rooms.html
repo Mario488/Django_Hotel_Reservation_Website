@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'rooms_css.css' %}">
+{% endblock %}
+
+{% block bodycontent %}
+
+<div class="room-grid">
+    {% for room in rooms %}
+    <div class="room-card" style="font-family: Segoe UI Black;">
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{room.id}}" name="room_id">
+            <img src="{% static room.id|stringformat:'s.jpg' %}">
+            <p>Тип: {{ room.get_room_types_display }}</p>
+            <p>Описание:</p>
+            <p class="symbol" style="color: rgb(221, 25, 25)">🡇</p>
+            <p class="desc" style="border-radius: 7px; display: none;">{{room.Description}}</p>
+            <h5>за {{ room.capacity }}-ма души{{ room.is_Free|yesno:" (Свободна),(Заета)" }}</h5>
+            <input type="hidden" value="{{room.Price}}" name="price">
+            <p>Цена: {{ room.Price|floatformat:2 }}лв.</p>
+            <button type="submit">Select Room</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+
+<script src="{% static 'rooms_js.js'%}"></script>
+{% endblock %}

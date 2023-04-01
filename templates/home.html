@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block styles%} 
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home_css.css' %}">
+{% endblock %}
+{% block bodycontent %}
+    {% for message in messages %}
+    <div class="success">{{ message }}</div>
+    {% endfor %}
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Добре дошли в Хотелски Резервации!</h1>
+            <p>Насладете се на най-доброто от луксозното настаняване с нашите петзвездни хотели. Резервирайте сега!
+            </p>
+            <a href="{% url 'rooms'%}" class="btn">Book Now</a>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Hotel Reservatios. All rights reserved.</p>
+        </div>
+    </footer>
+{% endblock %}
