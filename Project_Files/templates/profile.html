@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block styles%}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'profile_css.css' %}">
+{% endblock %}
+
+{% block bodycontent %}
+<div class="container">
+    <h1>My Profile</h1>
+    <div class="profile-info">
+        <div>
+            <label>Username:</label>
+            <p>{{username}}</p>
+        </div>
+        <div>
+            <label>Email:</label>
+            <p>{{email}}</p>
+        </div>
+        <div>
+            <label>Password:</label>
+            <p>⚪⚪⚪⚪⚪⚪⚪⚪</p>
+        </div>
+    </div>
+    <div class="profile-actions">
+        <a href="#" id="view_res">My Reservations</a>
+        <a href="{% url 'change_password' %}">Change Password</a>
+    </div>
+</div>
+<div class="room-grid" style="display:none;">
+    {% for room, reservation in reserv %}
+    <div class="room-card" style="font-family: Segoe UI Black;">
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{room.id}}" name="room_id">
+            <img src="{% static room.id|stringformat:'s.jpg' %}">
+            <p>Тип: {{ room.get_room_types_display }} </p>
+
+            <p>Дати:</p>
+            <input type="hidden" value="{{reservation.start_date}}" name="start_date">
+            <input type="hidden" value="{{reservation.end_date}}" name="end_date">
+            <p id="desc" style="border-radius: 7px;">{{reservation.start_date}} - {{reservation.end_date}}</p>
+
+            <h5>за {{ room.capacity }}-ма души{{ room.is_Free|yesno:" (Свободна),(Заета)" }}</h5>
+            <input type="hidden" value="{{room.Price}}" name="price">
+            <p>Крайна Цена: {{ reservation.cost|floatformat:2 }}лв.</p>
+            <button type="submit">Cancel Reservation</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+<p class="total-cost">Общо от резервации: <span
+        style="color: #f4a261" class="cost">{{cost|floatformat:2}}</span> лв.</p>
+
+<script src="{% static 'profile_js.js'%}"></script>
+{% endblock %}

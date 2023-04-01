@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block styles%}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'reservation_css.css' %}">
+{% endblock %}
+
+{% block bodycontent %}
+<h1>Reservations</h1>
+<form method="post" action="{% url 'reservation'%}">
+    {% csrf_token %}
+    {% if InvalidDates == 'End date must be after the start date.' %}
+    <h2 style="background-color: #ffcccc; color: #cc0000; border: 2px solid #cc0000; padding: 10px; text-align: center;">
+        {{ InvalidDates }}
+    {% endif %}
+    </h2>
+    <label for="room-id">Room ID:</label>
+    <input type="text" value="{{id}}" id="room_id" name="room_id" required readonly
+        style="color:green; font-weight: bold; letter-spacing: 1px; font-size: 1.2rem;">
+
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" required>
+
+    <label for="first_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" required>
+
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" name="phone" required minlength="10" maxlength="10" pattern="\d{10}">
+
+    <label for="phone">Email:</label>
+    <input type="email" id="email" name="email" value="{{email}}" readonly>
+    
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" value="{{username}}" readonly>
+
+    <label for="start-date">Start Date:</label>
+    <input type="date" id="start-date" name="start-date" required>
+
+    <label for="end-date">End Date:</label>
+    <input type="date" id="end-date" name="end-date" required>
+
+    <label for="breakfast">Include Breakfast: +5лв.</label>
+    <input type="checkbox" id="breakfast" name="breakfast">
+
+    <label for="all-inclusive">All Inclusive: +10лв.</label>
+    <input type="checkbox" id="all-inclusive" name="all-inclusive">
+
+    <label for="price">Price:</label>
+    <input type="text" value="{{price}}0лв." id="price" name="price" required readonly style="color:green; font-weight: bold; letter-spacing: 1px; font-size: 1.2rem;">
+
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

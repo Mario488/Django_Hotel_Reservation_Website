@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.profile-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.profile-info label {
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.profile-info p {
+    font-size: 18px;
+    margin: 0;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#choose_img {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+#choose_img:hover {
+    background-color: #e8a2a2;
+    color: black;
+}
+
+.profile-actions a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.profile-actions a:hover {
+    background-color: #e8a2a2;
+    color: black;
+}
+
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: rgb(155, 141, 141);
+}
+
+.room-card {
+    background-color: rgb(210, 210, 236);
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: 8px;
+}
+
+.room-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.room-card h5 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.total-cost {
+    background-color: #3b6978;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.85rem;
+    font-weight: bold;
+}
+
+.total-cost:hover {
+    background-color: #16a085;
+    cursor: cell;
+}
+
+.room-card p {
+    margin-bottom: 10px;
+}
+
+.room-card button {
+    background-color: rgb(106, 9, 9);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transform: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#selected-image {
+    border: 2px solid black;
+}
+
+.room-card button:hover {
+    background-color: #fff;
+    transform: translateY(-3px);
+    color: rgb(106, 9, 9);
+}

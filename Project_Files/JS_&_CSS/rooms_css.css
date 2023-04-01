@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow: auto;
+}
+
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: rgb(155, 141, 141);
+}
+
+.room-card {
+    background-color: rgb(210, 210, 236);
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: 8px;
+}
+
+.room-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.room-card h5 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.room-card p {
+    margin-bottom: 10px;
+}
+
+.room-card button {
+    background-color: rgb(106, 9, 9);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transform: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.room-card button:hover {
+    background-color: #fff;
+    transform: translateY(-3px);
+    color: rgb(106, 9, 9);
+}
+
+div .desc {
+    display: none;
+}
+
+div .symbol:hover+.desc {
+    display: inline;
+    font-weight: bold;
+}
+
+.symbol:hover {
+    background-color: white;
+    cursor: pointer;
+}
+
+img {
+    transition: all 0.8s;
+}
+
+img:hover {
+    outline: 3px solid green;
+    transform: scale(1.03);
+}
